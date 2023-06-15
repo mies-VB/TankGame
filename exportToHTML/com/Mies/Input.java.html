@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Input.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #fb4934;}
+.s1 { color: #fbf1c7;}
+.s2 { color: #ebdbb2;}
+.s3 { color: #f8e1aa;}
+.s4 { color: #928374; font-style: italic;}
+.s5 { color: #d3869b;}
+.s6 { color: #b8bb26;}
+</style>
+</head>
+<body bgcolor="#282828">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Input.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">Mies</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">Vec2</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">components</span><span class="s2">.</span><span class="s1">HealthIntComponent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">SpawnData</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">component</span><span class="s2">.</span><span class="s1">Component</span><span class="s2">;</span>
+
+<span class="s0">import static </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">Vec2</span><span class="s2">.</span><span class="s1">fromAngle</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">spawn</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Input </span><span class="s0">extends </span><span class="s1">Component </span><span class="s3">{</span>
+    <span class="s0">public </span><span class="s1">HealthIntComponent hp</span><span class="s2">;</span><span class="s4">//initializes variable hp</span>
+
+    <span class="s0">public void </span><span class="s1">rotateLeft</span><span class="s3">(){</span><span class="s4">//rotates the player left</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">; </span><span class="s4">//retrieves the health of the entity</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action will only occur if entity is not dead</span>
+            <span class="s1">entity</span><span class="s2">.</span><span class="s1">rotateBy</span><span class="s3">(</span><span class="s2">-</span><span class="s5">2</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//rotates entity left by 2 degrees at a time</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+    <span class="s0">public void </span><span class="s1">rotateRight</span><span class="s3">(){</span><span class="s4">//rotates player right</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves health of the entity</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action will only occur if entity is not dead</span>
+            <span class="s1">entity</span><span class="s2">.</span><span class="s1">rotateBy</span><span class="s3">(</span><span class="s5">2</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//rotates entity right by 2 degrees at a time</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+    <span class="s0">public void </span><span class="s1">moveForward</span><span class="s3">(){</span><span class="s4">//moves entity forward</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves health of the entity</span>
+        <span class="s1">Vec2 dir </span><span class="s2">= </span><span class="s1">fromAngle</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getRotation</span><span class="s3">())</span><span class="s4">//retrieves the rotation of the entity</span>
+                <span class="s2">.</span><span class="s1">mulLocal</span><span class="s3">(</span><span class="s5">1.25</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//multiplies it by 1.25</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action will only occur if entity is not dead</span>
+            <span class="s1">entity</span><span class="s2">.</span><span class="s1">translate</span><span class="s3">(</span><span class="s1">dir</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//translates entity in the direction it is faced</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+    <span class="s0">public void </span><span class="s1">moveBack</span><span class="s3">(){</span><span class="s4">//moves entity backwards</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves health of the entity</span>
+        <span class="s1">Vec2 dir </span><span class="s2">= </span><span class="s1">fromAngle</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getRotation</span><span class="s3">() </span><span class="s2">+ </span><span class="s5">180</span><span class="s3">)</span><span class="s4">//retrieves the rotation of the entity</span>
+                <span class="s2">.</span><span class="s1">mulLocal</span><span class="s3">(</span><span class="s5">1.25</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//multiplies it by 1.25</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action will only occur if entity is not dead</span>
+            <span class="s1">entity</span><span class="s2">.</span><span class="s1">translate</span><span class="s3">(</span><span class="s1">dir</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//translates entity backwards from the direction it is faced</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+
+    <span class="s0">public void </span><span class="s1">shoot1</span><span class="s3">(){</span><span class="s4">//Player 1 shoots</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves health of the entity</span>
+        <span class="s1">Vec2 dir </span><span class="s2">= </span><span class="s1">fromAngle</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getRotation</span><span class="s3">())</span><span class="s2">;</span><span class="s4">//retrieves rotation of the entity</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action will only occur if entity is not dead</span>
+            <span class="s4">//spawns bullet in the centre of the player 1 tank facing the direction of the barrel</span>
+            <span class="s1">spawn</span><span class="s3">(</span><span class="s6">&quot;bullet1&quot;</span><span class="s2">, </span><span class="s0">new </span><span class="s1">SpawnData</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getX</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s2">, </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getY</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s3">)</span>
+                    <span class="s2">.</span><span class="s1">put</span><span class="s3">(</span><span class="s6">&quot;dir&quot;</span><span class="s2">, </span><span class="s1">dir</span><span class="s2">.</span><span class="s1">toPoint2D</span><span class="s3">())</span>
+            <span class="s3">)</span><span class="s2">;</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+
+    <span class="s0">public void </span><span class="s1">shoot2</span><span class="s3">(){</span><span class="s4">//Player 2 shoots</span>
+        <span class="s1">hp </span><span class="s2">= </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves the health of the entity</span>
+        <span class="s1">Vec2 dir </span><span class="s2">= </span><span class="s1">fromAngle</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getRotation</span><span class="s3">())</span><span class="s2">;</span><span class="s4">//retrieves the rotation of the entity</span>
+        <span class="s0">if</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">()</span><span class="s2">&gt;</span><span class="s5">0</span><span class="s3">) {</span><span class="s4">//action only occurs if entity is not dead</span>
+            <span class="s4">//spawns bullet in the player 2 tank facing the direction of the barrel</span>
+            <span class="s1">spawn</span><span class="s3">(</span><span class="s6">&quot;bullet2&quot;</span><span class="s2">, </span><span class="s0">new </span><span class="s1">SpawnData</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getX</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s2">, </span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getY</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s3">)</span>
+                    <span class="s2">.</span><span class="s1">put</span><span class="s3">(</span><span class="s6">&quot;dir&quot;</span><span class="s2">, </span><span class="s1">dir</span><span class="s2">.</span><span class="s1">toPoint2D</span><span class="s3">())</span>
+            <span class="s3">)</span><span class="s2">;</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+<span class="s3">}</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>PlayerComponent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #fb4934;}
+.s1 { color: #fbf1c7;}
+.s2 { color: #ebdbb2;}
+.s3 { color: #f8e1aa;}
+.s4 { color: #928374; font-style: italic;}
+.s5 { color: #d3869b;}
+.s6 { color: #b8bb26;}
+</style>
+</head>
+<body bgcolor="#282828">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PlayerComponent.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">Mies</span><span class="s2">;</span>
+
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">math</span><span class="s2">.</span><span class="s1">FXGLMath</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">FXGL</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">components</span><span class="s2">.</span><span class="s1">HealthIntComponent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">SpawnData</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">component</span><span class="s2">.</span><span class="s1">Component</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">components</span><span class="s2">.</span><span class="s1">CollidableComponent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">geometry</span><span class="s2">.</span><span class="s1">Rectangle2D</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">Text</span><span class="s2">;</span>
+<span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">FXGL</span><span class="s2">.*;</span>
+
+<span class="s0">public class </span><span class="s1">PlayerComponent </span><span class="s0">extends </span><span class="s1">Component </span><span class="s3">{</span>
+
+    <span class="s0">public void </span><span class="s1">respawn</span><span class="s3">(){</span><span class="s4">//respawn player after hit with a bullet</span>
+        <span class="s4">//respawns player in a random location on the map</span>
+        <span class="s1">entity</span><span class="s2">.</span><span class="s1">setPosition</span><span class="s3">(</span><span class="s1">FXGLMath</span><span class="s2">.</span><span class="s1">randomPoint</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Rectangle2D</span><span class="s3">(</span><span class="s2">-</span><span class="s5">200</span><span class="s2">,-</span><span class="s5">200</span><span class="s2">, </span><span class="s1">getAppWidth</span><span class="s3">()</span><span class="s2">,</span><span class="s1">getAppHeight</span><span class="s3">())))</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s3">(</span><span class="s1">Physics</span><span class="s2">.</span><span class="s1">BarrierCollide</span><span class="s3">){</span><span class="s4">//if it respawns within a barrier, it will try again</span>
+            <span class="s1">entity</span><span class="s2">.</span><span class="s1">setPosition</span><span class="s3">(</span><span class="s1">FXGLMath</span><span class="s2">.</span><span class="s1">randomPoint</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Rectangle2D</span><span class="s3">(</span><span class="s2">-</span><span class="s5">200</span><span class="s2">,-</span><span class="s5">200</span><span class="s2">, </span><span class="s1">getAppWidth</span><span class="s3">()</span><span class="s2">,</span><span class="s1">getAppHeight</span><span class="s3">())))</span><span class="s2">;</span>
+        <span class="s3">}</span>
+    <span class="s3">}</span>
+
+    <span class="s0">public void </span><span class="s1">kill</span><span class="s3">() {</span><span class="s4">//after being hit 3 times, the player dies</span>
+        <span class="s4">//spawns deadTank at the location of the tank that just dies</span>
+        <span class="s1">Main</span><span class="s2">.</span><span class="s1">deadTank</span><span class="s2">.</span><span class="s1">setPosition</span><span class="s3">(</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getX</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s2">,</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">getCenter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">getY</span><span class="s3">() </span><span class="s2">- </span><span class="s5">5</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s1">Main</span><span class="s2">.</span><span class="s1">deadTank</span><span class="s2">.</span><span class="s1">setOpacity</span><span class="s3">(</span><span class="s5">100</span><span class="s3">)</span><span class="s2">;</span>
+
+        <span class="s4">//removes the ability of the killed tank to collide with other objects</span>
+        <span class="s1">entity</span><span class="s2">.</span><span class="s1">removeComponent</span><span class="s3">(</span><span class="s1">CollidableComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s4">//sets opacity of the killed tank to 0 so it is no longer visible on screen</span>
+        <span class="s1">entity</span><span class="s2">.</span><span class="s1">setOpacity</span><span class="s3">(</span><span class="s5">0</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s4">//Instead of removing the entity from the world, I made it invisible because there was an error that would be thrown after the dead player creates any input because it tries to move an entity that doesn't exist</span>
+
+        <span class="s1">var hp </span><span class="s2">= </span><span class="s1">Main</span><span class="s2">.</span><span class="s1">player1</span><span class="s2">.</span><span class="s1">getComponent</span><span class="s3">(</span><span class="s1">HealthIntComponent</span><span class="s2">.</span><span class="s0">class</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//retrieves the health of player 1</span>
+        <span class="s1">Text winnerMessage</span><span class="s2">;</span><span class="s4">//initializes winner message variable</span>
+
+        <span class="s0">if </span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">getValue</span><span class="s3">() </span><span class="s2">&gt; </span><span class="s5">1</span><span class="s3">) {</span><span class="s4">//if the hp of player1 &gt;1, player 1 must have won</span>
+            <span class="s1">winnerMessage </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Text</span><span class="s3">(</span><span class="s6">&quot;Winner: Player 1&quot;</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s3">} </span><span class="s0">else </span><span class="s3">{</span><span class="s4">//if the hp of player1&lt;1, player 2 must have won</span>
+            <span class="s1">winnerMessage </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Text</span><span class="s3">(</span><span class="s6">&quot;Winner: Player 2&quot;</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s3">}</span>
+
+        <span class="s4">//places the winnerMessage at the desired location</span>
+        <span class="s1">winnerMessage</span><span class="s2">.</span><span class="s1">setTranslateX</span><span class="s3">(</span><span class="s5">460</span><span class="s3">)</span><span class="s2">; </span><span class="s4">//X Location</span>
+        <span class="s1">winnerMessage</span><span class="s2">.</span><span class="s1">setTranslateY</span><span class="s3">(</span><span class="s5">250</span><span class="s3">)</span><span class="s2">; </span><span class="s4">//Y Location</span>
+
+        <span class="s4">//text on the screen tells the user how to leave the game</span>
+        <span class="s1">Text exitMenu </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Text</span><span class="s3">(</span><span class="s6">&quot;–Press ESC to exit to main menu–&quot;</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s4">//places the exitMenu text at the desired location</span>
+        <span class="s1">exitMenu</span><span class="s2">.</span><span class="s1">setTranslateX</span><span class="s3">(</span><span class="s5">420</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//X Location</span>
+        <span class="s1">exitMenu</span><span class="s2">.</span><span class="s1">setTranslateY</span><span class="s3">(</span><span class="s5">275</span><span class="s3">)</span><span class="s2">;</span><span class="s4">//Y Location</span>
+
+        <span class="s4">//displays the two texts</span>
+        <span class="s1">FXGL</span><span class="s2">.</span><span class="s1">getGameScene</span><span class="s3">()</span><span class="s2">.</span><span class="s1">addUINode</span><span class="s3">(</span><span class="s1">winnerMessage</span><span class="s3">)</span><span class="s2">;</span>
+        <span class="s1">FXGL</span><span class="s2">.</span><span class="s1">getGameScene</span><span class="s3">()</span><span class="s2">.</span><span class="s1">addUINode</span><span class="s3">(</span><span class="s1">exitMenu</span><span class="s3">)</span><span class="s2">;</span>
+    <span class="s3">}</span>
+
+
+
+
+
+
+
+<span class="s3">}</span>
+</pre>
+</body>
+</html>

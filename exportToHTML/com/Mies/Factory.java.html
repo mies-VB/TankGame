@@ -1,0 +1,183 @@
+<html>
+<head>
+<title>Factory.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #fb4934;}
+.s1 { color: #fbf1c7;}
+.s2 { color: #ebdbb2;}
+.s3 { color: #f8e1aa;}
+.s4 { color: #b8bb26;}
+.s5 { color: #928374; font-style: italic;}
+.s6 { color: #d3869b;}
+</style>
+</head>
+<body bgcolor="#282828">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Factory.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">Mies</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">FXGL</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">components</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">Entity</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">EntityFactory</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">SpawnData</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">entity</span><span class="s2">.</span><span class="s1">Spawns</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">particle</span><span class="s2">.</span><span class="s1">ParticleComponent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">particle</span><span class="s2">.</span><span class="s1">ParticleEmitters</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">ProgressBar</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">geometry</span><span class="s2">.</span><span class="s1">Point2D</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">paint</span><span class="s2">.</span><span class="s1">Color</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Duration</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">com</span><span class="s2">.</span><span class="s1">almasb</span><span class="s2">.</span><span class="s1">fxgl</span><span class="s2">.</span><span class="s1">dsl</span><span class="s2">.</span><span class="s1">FXGL</span><span class="s2">.*;</span>
+
+
+<span class="s0">public class </span><span class="s1">Factory </span><span class="s0">implements </span><span class="s1">EntityFactory </span><span class="s3">{</span>
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;bullet1&quot;</span><span class="s3">)</span><span class="s5">//creates the player 1 bullet</span>
+    <span class="s0">public </span><span class="s1">Entity newBullet1</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s1">Point2D dir </span><span class="s2">= </span><span class="s1">data</span><span class="s2">.</span><span class="s1">get</span><span class="s3">(</span><span class="s4">&quot;dir&quot;</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//retrieves the direction it faces</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">BULLET1</span><span class="s3">)</span><span class="s5">//classifies it as a bullet1 entity for collisions</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s4">&quot;bullet.png&quot;</span><span class="s3">)</span><span class="s5">//entity has the bullet image with a bounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">ProjectileComponent</span><span class="s3">(</span><span class="s1">dir</span><span class="s2">, </span><span class="s6">250</span><span class="s3">))</span><span class="s5">//projectile moves in the direction it faces when shot, at 250 pixels/s</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">OffscreenCleanComponent</span><span class="s3">())</span><span class="s5">//if it leaves the screen it is removed.</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Physics</span><span class="s3">())</span><span class="s5">//uses the physics class</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds bullet1</span>
+    <span class="s3">}</span>
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;bullet2&quot;</span><span class="s3">) </span><span class="s5">//creates the player 2 bullet</span>
+    <span class="s0">public </span><span class="s1">Entity newBullet2</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s1">Point2D dir </span><span class="s2">= </span><span class="s1">data</span><span class="s2">.</span><span class="s1">get</span><span class="s3">(</span><span class="s4">&quot;dir&quot;</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//retrieves the direction it faces</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">BULLET2</span><span class="s3">)</span><span class="s5">//classifies it as a bullet2 entity for collisions</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s4">&quot;bullet.png&quot;</span><span class="s3">)</span><span class="s5">//entity has bullet image with a bounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">ProjectileComponent</span><span class="s3">(</span><span class="s1">dir</span><span class="s2">, </span><span class="s6">250</span><span class="s3">))</span><span class="s5">//entity moves in the direction it faces when shot</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">OffscreenCleanComponent</span><span class="s3">())</span><span class="s5">//if it leaves the screen it is removed</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Physics</span><span class="s3">())</span><span class="s5">//uses the physics class</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds bullet2</span>
+    <span class="s3">}</span>
+
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;background&quot;</span><span class="s3">)</span><span class="s5">//creates the background</span>
+    <span class="s0">public </span><span class="s1">Entity newBackground</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">view</span><span class="s3">(</span><span class="s4">&quot;background.png&quot;</span><span class="s3">)</span><span class="s5">//background has the background image</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds the background</span>
+
+    <span class="s3">}</span>
+
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;barrier1&quot;</span><span class="s3">)</span><span class="s5">//creates the vertical barrier</span>
+    <span class="s0">public </span><span class="s1">Entity newBarrier1</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">BARRIER</span><span class="s3">)</span><span class="s5">//classifies it as a barrier entity for collisions</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s4">&quot;barrier.png&quot;</span><span class="s3">)</span><span class="s5">//barrier has barrier image with a bounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds the vertical barrier</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;barrier2&quot;</span><span class="s3">)</span><span class="s5">//creates the horizontal barrier</span>
+    <span class="s0">public </span><span class="s1">Entity newBarrier2</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">) {</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">BARRIER</span><span class="s3">)</span><span class="s5">//classifies it as a barrier entity for collisions</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s4">&quot;horizontalBarrier.png&quot;</span><span class="s3">)</span><span class="s5">//barrier has horizontal barrier image with abounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds the horizontal barrier</span>
+    <span class="s3">}</span>
+
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;player1&quot;</span><span class="s3">)</span><span class="s5">//creates player 1</span>
+    <span class="s0">public </span><span class="s1">Entity newPlayer1</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+
+        <span class="s1">var hp </span><span class="s2">= </span><span class="s0">new </span><span class="s1">HealthIntComponent</span><span class="s3">(</span><span class="s6">3</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//creates a health component with a max health of 3</span>
+
+        <span class="s1">var hpView </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProgressBar</span><span class="s3">(</span><span class="s0">true</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//creates a health bar that changes as the health changes</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setFill</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLUE</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//health bar is blue</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setMaxValue</span><span class="s3">(</span><span class="s6">3</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//shows a maximum of 3</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setWidth</span><span class="s3">(</span><span class="s6">26</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//width of bar</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setRotate</span><span class="s3">(</span><span class="s6">90</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//rotates bar 90 degrees</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setTranslateY</span><span class="s3">(</span><span class="s6">8</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//translates health bar up 8 pixels</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setTranslateX</span><span class="s3">(</span><span class="s2">-</span><span class="s6">25</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//translates health bar 25 pixels left</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">currentValueProperty</span><span class="s3">()</span><span class="s2">.</span><span class="s1">bind</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">valueProperty</span><span class="s3">())</span><span class="s2">;</span><span class="s5">//binds how many lives you have left to the changes in the progress bar</span>
+
+        <span class="s5">//defines the tank texture, turns it blue, and makes it a bit brighter</span>
+        <span class="s1">var texture </span><span class="s2">= </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">texture</span><span class="s3">(</span><span class="s4">&quot;tank.png&quot;</span><span class="s3">)</span><span class="s2">.</span><span class="s1">multiplyColor</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLUE</span><span class="s3">)</span><span class="s2">.</span><span class="s1">brighter</span><span class="s3">()</span><span class="s2">.</span><span class="s1">brighter</span><span class="s3">()</span><span class="s2">;</span>
+
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">PLAYER1</span><span class="s3">)</span><span class="s5">//classifies it as a player1 entity for collisions</span>
+                <span class="s2">.</span><span class="s1">at</span><span class="s3">(</span><span class="s6">25</span><span class="s2">, </span><span class="s6">240</span><span class="s3">)</span><span class="s5">//spawns the player at (25,240) initially</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s1">texture</span><span class="s3">)</span><span class="s5">//player 1 has the texture defined above with a bounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">view</span><span class="s3">(</span><span class="s1">hpView</span><span class="s3">)</span><span class="s5">//has the hp progress bar</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s1">hp</span><span class="s3">)</span><span class="s5">//has a hp component</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">PlayerComponent</span><span class="s3">())</span><span class="s5">//uses the PlayerComponent class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Input</span><span class="s3">())</span><span class="s5">//uses the Input class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Physics</span><span class="s3">())</span><span class="s5">//uses the physics class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">KeepOnScreenComponent</span><span class="s3">())</span><span class="s5">//cannot leave the bounds of the screen</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds player 1</span>
+    <span class="s3">}</span>
+
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;player2&quot;</span><span class="s3">)</span><span class="s5">//creates player 2</span>
+    <span class="s0">public </span><span class="s1">Entity newPlayer2</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s1">var hp </span><span class="s2">= </span><span class="s0">new </span><span class="s1">HealthIntComponent</span><span class="s3">(</span><span class="s6">3</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//creates a health component with a max health of 3</span>
+
+        <span class="s1">var hpView </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ProgressBar</span><span class="s3">(</span><span class="s0">true</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//creates a health bar that changes as the health changes</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setFill</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">LIMEGREEN</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//health bar is blue</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setMaxValue</span><span class="s3">(</span><span class="s6">3</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//shows a maximum of 3</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setWidth</span><span class="s3">(</span><span class="s6">26</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//width of bar</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setRotate</span><span class="s3">(</span><span class="s6">90</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//rotates bar 90 degrees</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setTranslateY</span><span class="s3">(</span><span class="s6">8</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//translates health bar up 8 pixels</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">setTranslateX</span><span class="s3">(</span><span class="s2">-</span><span class="s6">25</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//translates health bar 25 pixels left</span>
+        <span class="s1">hpView</span><span class="s2">.</span><span class="s1">currentValueProperty</span><span class="s3">()</span><span class="s2">.</span><span class="s1">bind</span><span class="s3">(</span><span class="s1">hp</span><span class="s2">.</span><span class="s1">valueProperty</span><span class="s3">())</span><span class="s2">;</span><span class="s5">//binds how many lives you have left to the changes in the progress bar</span>
+
+        <span class="s5">//defines the tank texture, turns it Lime green, and makes it a bit brighter</span>
+        <span class="s1">var texture </span><span class="s2">= </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">texture</span><span class="s3">(</span><span class="s4">&quot;tank.png&quot;</span><span class="s3">)</span><span class="s2">.</span><span class="s1">multiplyColor</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">LIMEGREEN</span><span class="s3">)</span><span class="s2">.</span><span class="s1">brighter</span><span class="s3">()</span><span class="s2">;</span>
+
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">type</span><span class="s3">(</span><span class="s1">EntityType</span><span class="s2">.</span><span class="s1">PLAYER2</span><span class="s3">)</span><span class="s5">//classifies it as a player2 entity for collisions</span>
+                <span class="s2">.</span><span class="s1">at</span><span class="s3">(</span><span class="s6">900</span><span class="s2">, </span><span class="s6">400</span><span class="s3">)</span><span class="s5">//spawns the player at (900,400) initially</span>
+                <span class="s2">.</span><span class="s1">viewWithBBox</span><span class="s3">(</span><span class="s1">texture</span><span class="s3">)</span><span class="s5">//player 2 has the texture defined above with a bounding box for collisions</span>
+                <span class="s2">.</span><span class="s1">view</span><span class="s3">(</span><span class="s1">hpView</span><span class="s3">)</span><span class="s5">//has the hp progress bar</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s1">hp</span><span class="s3">)</span><span class="s5">//has a hp component</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">PlayerComponent</span><span class="s3">())</span><span class="s5">//uses the PlayerComponent class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Input</span><span class="s3">())</span><span class="s5">//uses the Input class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">Physics</span><span class="s3">())</span><span class="s5">//uses the physics class</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">KeepOnScreenComponent</span><span class="s3">())</span><span class="s5">//cannot leave the bounds of the screen</span>
+                <span class="s2">.</span><span class="s1">collidable</span><span class="s3">()</span><span class="s5">//can collide with other entities</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//builds player 2</span>
+    <span class="s3">}</span>
+
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;explosion&quot;</span><span class="s3">)</span><span class="s5">//creates explosion for when a player gets hit</span>
+    <span class="s0">public </span><span class="s1">Entity newExplosion</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">) {</span>
+        <span class="s1">var emitter </span><span class="s2">= </span><span class="s1">ParticleEmitters</span><span class="s2">.</span><span class="s1">newExplosionEmitter</span><span class="s3">(</span><span class="s6">100</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//the radius of the explosion is 100 pixels</span>
+        <span class="s1">emitter</span><span class="s2">.</span><span class="s1">setMaxEmissions</span><span class="s3">(</span><span class="s6">1</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//how circles of particles it generates</span>
+        <span class="s1">emitter</span><span class="s2">.</span><span class="s1">setSize</span><span class="s3">(</span><span class="s6">4</span><span class="s2">, </span><span class="s6">10</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//how large the particles are</span>
+        <span class="s1">emitter</span><span class="s2">.</span><span class="s1">setStartColor</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">YELLOW</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//the particles start off as yellow</span>
+        <span class="s1">emitter</span><span class="s2">.</span><span class="s1">setEndColor</span><span class="s3">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">RED</span><span class="s3">)</span><span class="s2">;</span><span class="s5">//the particles turn red</span>
+        <span class="s1">emitter</span><span class="s2">.</span><span class="s1">setSpawnPointFunction</span><span class="s3">(</span><span class="s1">i -&gt; </span><span class="s0">new </span><span class="s1">Point2D</span><span class="s3">(</span><span class="s6">64</span><span class="s2">, </span><span class="s6">64</span><span class="s3">))</span><span class="s2">;</span><span class="s5">//where the explosion will spawn</span>
+
+        <span class="s0">return </span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">ExpireCleanComponent</span><span class="s3">(</span><span class="s1">Duration</span><span class="s2">.</span><span class="s1">seconds</span><span class="s3">(</span><span class="s6">10</span><span class="s3">)))</span><span class="s5">//how long the explosion lasts</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">ParticleComponent</span><span class="s3">(</span><span class="s1">emitter</span><span class="s3">))</span><span class="s5">//the particles emit outwards</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//build the explosion emitter</span>
+    <span class="s3">}</span>
+
+    <span class="s1">@Spawns</span><span class="s3">(</span><span class="s4">&quot;deadTank&quot;</span><span class="s3">)</span><span class="s5">//creates the dead tank for when the player dies</span>
+    <span class="s0">public </span><span class="s1">Entity newDeadTank</span><span class="s3">(</span><span class="s1">SpawnData data</span><span class="s3">){</span>
+        <span class="s0">return </span><span class="s1">FXGL</span><span class="s2">.</span><span class="s1">entityBuilder</span><span class="s3">(</span><span class="s1">data</span><span class="s3">)</span>
+                <span class="s2">.</span><span class="s1">view</span><span class="s3">(</span><span class="s4">&quot;deadTank.png&quot;</span><span class="s3">)</span><span class="s5">//sets the entity picture as deadTank</span>
+                <span class="s2">.</span><span class="s1">with</span><span class="s3">(</span><span class="s0">new </span><span class="s1">PlayerComponent</span><span class="s3">())</span><span class="s5">//uses the playercomponent class</span>
+                <span class="s2">.</span><span class="s1">scale</span><span class="s3">(</span><span class="s6">1.25</span><span class="s2">,</span><span class="s6">1.25</span><span class="s3">)</span><span class="s5">//scales the image to be a bit faster</span>
+                <span class="s2">.</span><span class="s1">build</span><span class="s3">()</span><span class="s2">;</span><span class="s5">//build the dead tank</span>
+
+    <span class="s3">}</span>
+<span class="s3">}</span>
+</pre>
+</body>
+</html>
