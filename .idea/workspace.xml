@@ -4,46 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b43b79f-a5a5-4717-adc2-bab2fb62b9cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/EntityType.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/Factory.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/Input.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/Main.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/Physics.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/PlayerComponent.java.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exportToHTML/com/Mies/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.07.56.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.08.41.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.09.12.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.09.37.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.09.52.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.10.06.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.10.41.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.10.59.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.11.15.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logs/FXGL-14-Jun.-2023-15.19.11.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/EntityType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/Factory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/Input.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/Physics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/Mies/PlayerComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/barrier.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/bullet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/deadTank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/horizontalBarrier.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/tank.png" afterDir="false" />
+    <list default="true" id="1b43b79f-a5a5-4717-adc2-bab2fb62b9cf" name="Changes" comment="TankGame protoype completed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,8 +86,16 @@
       <workItem from="1686611410061" duration="9182000" />
       <workItem from="1686669839440" duration="51000" />
       <workItem from="1686669894548" duration="2000" />
-      <workItem from="1686670327920" duration="15944000" />
+      <workItem from="1686670327920" duration="16949000" />
     </task>
+    <task id="LOCAL-00001" summary="TankGame protoype completed">
+      <created>1686802212783</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686802212783</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,5 +114,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="TankGame protoype completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="TankGame protoype completed" />
   </component>
 </project>
